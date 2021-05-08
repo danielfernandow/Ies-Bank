@@ -36,25 +36,38 @@ def signup():
     }
     return render_template('signup.html')
 
-@app.route('/ok', methods=['GET'])
-def show_details():
-    return 'tela detalhamento'
 
-@app.route('/ok/<user_id>', methods=['GET'])
+@app.route('/user/<user_id>', methods=['GET'])
 def show_details_id(user_id):
+    user = User.query.filter_by(id=user_id).first()
+    if not user:
+        return jsonify({'message': 'no user found.'})
+    pass
+
+    user_data = {
+        'id': user.id,
+        'name': user.nome,
+        'cpf': user.cpf,
+        #['password'] = user.password
+        'birth_date' : user.dataNascimento,
+        'email': user.email
+    }
     return 'tela detalhamento'
 
-@app.route('/transfer', methods=['GET'])
+
+@app.route('/balance/<user_id>', methods=['GET'])
 def transfer():
-    return 'transferir dinheiro/sacar da origem'
+    user = conta.query.filter_by(id=user_id).first()
+    balance_data={
 
+    }
+    
+    return 'retorna saldo'
+
+#funcao de banco
 @app.route('/transfer/<id_user>', methods=['POST'])
-def transfer_id(id_user1):
+def transfer_id(id_user):
     return 'transferir dinheiro/sacar da origem'
-
-@app.route('/balance', methods=['GET'])
-def balance():
-    return 'saldo da usuario'
 
 @app.route('/balance/<user_id>', methods=['GET'])
 def balance_id(id_user):
