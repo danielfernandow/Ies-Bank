@@ -32,12 +32,13 @@ def signup():
         'password' : request.form.get('password'),
         'cpf' : request.form.get('cpf'),
         'birth' : request.form.get('birth')
-
     }
+    #post in /conta
+    
     return render_template('signup.html')
 
 
-@app.route('/user/<user_id>', methods=['GET'])
+@app.route('/user/<pessoa_id>', methods=['GET'])
 def show_details_id(user_id):
     user = User.query.filter_by(id=user_id).first()
     if not user:
@@ -55,9 +56,9 @@ def show_details_id(user_id):
     return 'tela detalhamento'
 
 
-@app.route('/balance/<user_id>', methods=['GET'])
+@app.route('/conta/<conta_id>', methods=['GET'])
 def transfer():
-    user = conta.query.filter_by(id=user_id).first()
+    user = conta.query.filter_by(id=user.conta_id).first()
     balance_data={
 
     }
