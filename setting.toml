@@ -1,0 +1,3 @@
+[default]
+SECRET_KEY = 'jkdjfkjsdkjfks'
+SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://bhaskara:danield5@localhost/aps'
