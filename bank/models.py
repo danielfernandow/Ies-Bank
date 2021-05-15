@@ -2,67 +2,66 @@ from bank.extensions.database import db
 from sqlalchemy_serializer import SerializerMixin
 
 
-class Transacao_Status(db.Model, SerializerMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    descricao = db.Column(db.String(50))
-
-
-class Transacao_Tipo(db.Model, SerializerMixin):
-    tipo = db.Column(db.Integer, primary_key=True)
-    descricao = db.Column(db.String(50))
-
-
-class Transacao(db.Model, SerializerMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    conta_id = db.Column(db.Integer)
-    tipo = db.Column(db.Integer)
-    status = db.Column(db.Integer)
-    data = db.Column(db.DateTime)
-    valor = db.Column(db.Float)
-
-
-class Pessoa(db.Model, SerializerMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    endereco_id = db.Column(db.Integer)
-    conta_id = db.Column(db.Integer)
-    nome = db.Column(db.String(30))
+class Person(db.Model, SerializerMixin):
+    person_id = db.Column(db.Integer, primary_key=True)
+    adress_id = db.Column(db.Integer)
+    account_id = db.Column(db.Integer)
+    name = db.Column(db.String(256))
+    password = db.Column(db.String(512))
     cpf = db.Column(db.String(14))
-    dataNascimento = db.Column(db.DateTime)
-    email = db.Column(db.String(40))
-    password = db.Column(db.String(80))
+    birthdate = db.Column(db.DateTime)
+    email = db.Column(db.String(128))
 
 
-class Conta(db.Model, SerializerMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    status = db.Column(db.Integer)
-    agencia = db.Column(db.Integer)
-    saldo = db.Column(db.Float)
+class Account(db.Model, SerializerMixin):
+    account_id = db.Column(db.Integer, primary_key=True)
+    account_status_id = db.Column(db.Integer)
+    agency = db.Column(db.Integer)
+    balance = db.Column(db.Float)
 
 
-class Endereco(db.Model, SerializerMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    telefone_id = db.Column(db.Integer)
-    estado_id = db.Column(db.Integer)
-    municipio = db.Column(db.String(25))
-    endereco = db.Column(db.String(50))
-    numero = db.Column(db.String(5))
-    complemento = db.Column(db.String(30))
-    bairro = db.Column(db.String(20))
-    cep = db.Column(db.String(9))
+class AccountStatus(db.Model, SerializerMixin):
+    account_status_id = db.Column(db.Integer, primary_key=True)
+    description = db.Column(db.String(64))
 
 
-class Conta_Status(db.Model, SerializerMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    descricao = db.Column(db.String(50))
+class Transaction(db.Model, SerializerMixin):
+    transaction_id = db.Column(db.Integer, primary_key=True)
+    account_id = db.Column(db.Integer)
+    transaction_type_id = db.Column(db.Integer)
+    transaction_status_id = db.Column(db.Integer)
+    transactionDate = db.Column(db.DateTime)
+    amount = db.Column(db.Float)
 
 
-class telefone(db.Model, SerializerMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    ddd = db.Column(db.String(5))
-    numero = db.Column(db.String(10))
+class TransactionStatus(db.Model, SerializerMixin):
+    transaction_status_id = db.Column(db.Integer, primary_key=True)
+    description = db.Column(db.String(64))
 
 
-class estado(db.Model, SerializerMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(30))
-    sigla = db.Column(db.String(2))
+class TransactionTipo(db.Model, SerializerMixin):
+    transaction_type_id = db.Column(db.Integer, primary_key=True)
+    description = db.Column(db.String(64))
+
+
+class Adress(db.Model, SerializerMixin):
+    adress_id = db.Column(db.Integer, primary_key=True)
+    telephone_id = db.Column(db.Integer)
+    state_id = db.Column(db.Integer)
+    city = db.Column(db.String(64))
+    adress = db.Column(db.String(256))
+    number = db.Column(db.String(32))
+    district = db.Column(db.String(64))
+    zipCode = db.Column(db.String(9))
+
+
+class Telephone(db.Model, SerializerMixin):
+    telephone_id = db.Column(db.Integer, primary_key=True)
+    ddd = db.Column(db.String(3))
+    number = db.Column(db.String(10))
+
+
+class State(db.Model, SerializerMixin):
+    state_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(32))
+    initials = db.Column(db.String(2))
