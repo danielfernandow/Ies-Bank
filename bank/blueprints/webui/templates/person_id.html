@@ -1,0 +1,13 @@
+{% extends "person.html" %}
+{% block content %}
+<div class="container">
+<h1>{{ user.name }}</h1>
+
+<div class="jumbotron">
+<h2> {{(user.cpf)}}</h2>
+<p>
+    {{user.birthdate}}
+</p>
+</div>
+</div>
+{% endblock %}

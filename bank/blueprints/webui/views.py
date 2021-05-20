@@ -1,14 +1,24 @@
-from flask import abort, render_template
-from bank.models import Pessoa
+from re import template
+
+from flask.helpers import url_for
+from bank.extensions.database import db
+from flask import abort, render_template, request
+from bank.models import Person
 
 
-def pessoa():
-    pessoas = Pessoa.query.all()
-    return render_template("pessoa.html", pessoas=pessoas)
+def person():
+    users = Person.query.all()
+    return render_template("person.html", users=users)
 
 
-def pessoa_id(pessoa_id):
-    pessoa = Pessoa.query.filter_by(id=pessoa_id).first() or abort(
+def person_id(person_id):
+    user = Person.query.filter_by(person_id=person_id).first() or abort(
         404, "produto nao encontrado"
     )
-    return render_template("pessoa_id.html", pessoa=pessoa)
+    return render_template("person_id.html", user=user)
+
+def signin():
+    return render_template("signin.html")
+
+def signup():
+    return render_template("signup.html")

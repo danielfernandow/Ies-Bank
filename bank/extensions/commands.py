@@ -20,8 +20,13 @@ def init_app(app):
 
     # add a single command
     @app.cli.command()
-    @click.option('--username', '-u')
+    @click.option('--adress_id', '-a')
+    @click.option('--account_id', '-ac')
+    @click.option('--name', '-u')
     @click.option('--password', '-p')
-    def add_user(username, password):
+    @click.option('--cpf', '-c')
+    @click.option('--birthdate', '-b')
+    @click.option('--email', '-e')
+    def add_user(adress_id, account_id, name, password, cpf, birthdate, email):
         """Adds a new user to the database"""
-        return create_user(username, password)
+        return create_user(adress_id, account_id, name, password, cpf, birthdate, email)

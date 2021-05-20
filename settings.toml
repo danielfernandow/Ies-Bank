@@ -11,7 +11,7 @@ EXTENSIONS = [
     "bank.extensions.auth:init_app",
     "bank.extensions.commands:init_app",
     "bank.blueprints.webui:init_app",
-    "bank.blueprints.restapi:init_app"
+    "bank.blueprints.restapi:init_app",
 ]
 
 [development]
@@ -39,9 +39,3 @@ DEBUG_TB_PANELS = [
     "flask_debugtoolbar.panels.profiler.ProfilerDebugPanel",
     "flask_debugtoolbar.panels.config_vars.ConfigVarsDebugPanel"
 ]
-
-[testing]
-SQLALCHEMY_DATABASE_URI = 'sqlite:///testing.db'
-
-[production]
-SQLALCHEMY_DATABASE_URI = 'sqlite:///production.db'

@@ -17,9 +17,9 @@
 
 <div class="jumbotron">
 <ul class="list-group">
-    {% for pessoa in pessoas %}
+    {% for user in users %}
     <li class="list-group-item">
-        <a href="{{url_for('webui.pessoaview', pessoa_id=pessoa.id)}}">{{pessoa.nome}}- {{ "%0.2f" | format(pessoa.cpf)}}</a>
+        <a href="{{url_for('webui.personview', person_id=user.person_id)}}">{{user.name}}- {{(user.cpf)}}</a>
     </li>
     {% endfor %}
 </ul>
