@@ -5,7 +5,7 @@ from bank.extensions.database import db
 from bank.models import Person
 
 def verify_login(user):
-    """Valida o usuario e senha para efetuar o login"""
+    """Valida o cpf e senha para efetuar o login"""
     cpf = user.get('cpf')
     password = user.get('password')
     if not cpf or not password:
@@ -19,12 +19,15 @@ def verify_login(user):
 
 
 def create_user(data):
-    #if Person.query.filter_by(cpf=user['cpf']).first():
-       # raise RuntimeError(f"{user['cpf']} always registred")
-    user1 = Person(adress_id=3, account_id=1, name=data['name'], password=generate_password_hash(data['password']), cpf=data['cpf'], birthdate=data['birthdate'], email=data['email'])
+    #data = json.loads(data)
+    if Person.query.filter_by(cpf=data.get('cpf')).first():
+       raise RuntimeError(f"{data.get('cpf')} always registred")
+    user1 = Person(adress_id=3, account_id=1, name=data.get('name'), password=generate_password_hash(data.get('password')), cpf=data.get('cpf'), birthdate=data.get('birthdate'), email=data.get('email'))
     db.session.add(user1)
     db.session.commit()
-    return jsonify({"message": "created"}), 401
+    return jsonify({
+        "Created": data
+    })
 
 def init_app(app):
     SimpleLogin(app, login_checker=verify_login)
