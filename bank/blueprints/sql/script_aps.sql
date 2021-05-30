@@ -126,3 +126,29 @@ ALTER TABLE ADRESS ADD CONSTRAINT FK_ADRESS_STATE
 FOREIGN KEY (state_id) REFERENCES STATE (state_id)
 ON UPDATE NO ACTION
 ON DELETE NO ACTION;
+
+
+
+INSERT INTO account_status (description) VALUES (
+	'asdas'
+)
+
+INSERT INTO account (account_status_id, agency, balance) VALUES (
+	1, 1, 23.5
+)
+
+INSERT INTO telephone (ddd, number) VALUES (
+	'39', '959955'
+)
+
+INSERT INTO state (name, initials) VALUES (
+	'oasdkosa', 'sc'
+)
+
+INSERT INTO adress (telephone_id, state_id, city, adress, number, district, zipCode) VALUES (
+	1, 1, 'sdoakd', 'aosdkaso', 'oaskdoas', 'aosdksaodkk', 'aosdk'
+)
+
+INSERT INTO person (adress_id, account_id, name, password, cpf, birthdate, email) VALUES (
+	3, 1, 'bank teste', 'aksoek', '0685269323', '20/06/1995', 'daniel@gmail.com'
+)

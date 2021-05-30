@@ -1,0 +1,28 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}{{config.get('TITLE')}}{% endblock %}
+
+{% block navbar %}
+<div class="navbar">
+<div class="navbar-header">
+</div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<h1>{{config.get('TITLE')}}</h1>
+
+<div class="jumbotron">
+<ul class="list-group">
+    {% for account in accounts %}
+    <li class="list-group-item">
+        <a href="{{url_for('webui.accountView', account_id=account.account_id)}}">
+            <h3>id: {{account.account_id}}</h3>
+        </a>Agency: {{account.agency}} - Balance: {{(account.balance)}}</a>
+    </li>
+    {% endfor %}
+</ul>
+</div>
+
+</div>
+{% endblock %}

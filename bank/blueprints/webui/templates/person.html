@@ -1,0 +1,26 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}{{config.get('TITLE')}}{% endblock %}
+
+{% block navbar %}
+<div class="navbar">
+<div class="navbar-header">
+</div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<h1>{{config.get('TITLE')}}</h1>
+
+<div class="jumbotron">
+<ul class="list-group">
+    {% for user in users %}
+    <li class="list-group-item">
+        <a href="{{url_for('webui.personview', person_id=user.person_id)}}">{{user.name}}- {{(user.cpf)}}</a>
+    </li>
+    {% endfor %}
+</ul>
+</div>
+
+</div>
+{% endblock %}
