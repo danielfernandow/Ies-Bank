@@ -3,7 +3,7 @@ DEBUG = false
 FLASK_ADMIN_TEMPLATE_MODE = "bootstrap3"
 TITLE = "Bank Center"
 SECRET_KEY = "jkdjfkjsdkjfks"
-SQLALCHEMY_DATABASE_URI = "postgresql://postgres:postgres@localhost:5432/aps05"
+SQLALCHEMY_DATABASE_URI = "postgresql://:postgres@localhost:5432/aps05"
 PASSWORD_SCHEMES = ['pbkdf2_sha512', 'md5_crypt']
 EXTENSIONS = [
     "bank.extensions.appearance:init_app",
