@@ -22,7 +22,7 @@ def create_user(data):
     #data = json.loads(data)
     if Person.query.filter_by(cpf=data.get('cpf')).first():
        raise RuntimeError(f"{data.get('cpf')} always registred")
-    user1 = Person(adress_id=3, account_id=1, name=data.get('name'), password=generate_password_hash(data.get('password')), cpf=data.get('cpf'), birthdate=data.get('birthdate'), email=data.get('email'))
+    user1 = Person(adress_id=1, account_id=1, name=data.get('name'), password=generate_password_hash(data.get('password')), cpf=data.get('cpf'), birthdate=data.get('birthdate'), email=data.get('email'))
     db.session.add(user1)
     db.session.commit()
     return jsonify({
