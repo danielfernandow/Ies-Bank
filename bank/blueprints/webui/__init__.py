@@ -5,7 +5,7 @@ from .views import person, person_id, hello, accounts, account_id
 
 bp = Blueprint("webui", __name__, template_folder="templates")
 
-bp.add_url_rule("/", view_func=hello)
+bp.add_url_rule("/", view_func=person)
 bp.add_url_rule("/person/", view_func=person)
 bp.add_url_rule("/person/<person_id>", view_func=person_id, endpoint="personview")
 bp.add_url_rule("/account/", view_func=accounts)
